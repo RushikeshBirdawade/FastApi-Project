@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./app/database",
+        "./app/domain_types/schemas/book_",
+        "./app/domain_types/schemas/book_"
+    ]
+}
