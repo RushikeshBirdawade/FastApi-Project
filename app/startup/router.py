@@ -1,22 +1,14 @@
 
-from fastapi import FastAPI
-from app.startup.application import create_app
-from app.api.api_router import api_router
+from fastapi import APIRouter, Depends, HTTPException, status
+from app.api.api_router import router as api_router
 
-#app = create_app()
+router = APIRouter()
 
-#app.include_router(api_router)
+@router.get('/health-check', status_code=200)
+def perform_healthcheck():
+    return "OK"
 
-#@app.get("/")
-#def read_root():
-#    return {"message": "Welcome to the FastAPI application!"}
-
-#app.include_router(router)
-
-#from fastapi import FastAPI
-#from app.api.api_router import api_router
-
-def include_routers(app: FastAPI) -> None:
-    app.include_router(api_router)
+# Add API outer here...
+router.include_router(api_router)
 
 

@@ -1,14 +1,15 @@
 # main.py
-from fastapi import FastAPI 
-#from app.database.database import Base, engine ,SessionLocal 
+from fastapi import FastAPI
+from app.startup.application import app
+#from app.database.database import Base, engine ,SessionLocal
 #from app.startup.application import create_app
 
 
-from app.startup import router
+# from app.startup import router
 
 
 
-app=FastAPI
+# app=FastAPI
 
 #Base.metadata.create_all(bind=engine)
 

@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func
 from sqlalchemy.orm import relationship
-from app.database.database import Base
+from app.database.base import Base
+import json
 
 class Book(Base):
     __tablename__ = 'books'
@@ -18,3 +19,7 @@ class Book(Base):
 
    # author = relationship("Author", back_populates="books")
    # publisher = relationship("Publisher", back_populates="books")
+
+def __repr__(self):
+    jsonStr = json.dumps(self.__dict__)
+    return jsonStr

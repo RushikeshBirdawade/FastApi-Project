@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, DateTime, func
+from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
-from app.database.database import Base
+from app.database.base import Base
+from sqlalchemy.sql import func
 
 
 class Author(Base):

@@ -11,24 +11,34 @@
 #app.include_router(author_routes)
 #app.include_router(publisher_routes)
 #app.include_router(book_routes)
-    
+
 from fastapi import FastAPI
 from app.api import api_router
 from app.database.models.author_model import Base
 from app.database.models.book_model import Base
 from app.database.models.publisher_model import Base
-from app.database.database import engine
+from app.database.database_accessor import engine
+from app.startup.router import router
+from fastapi.middleware.cors import CORSMiddleware
 
-def create_app() -> FastAPI:
-    app = FastAPI()
+def get_application():
 
-    # Create all database tables
-    Base.metadata.create_all(bind=engine)
+    server = FastAPI()
 
-    # Include all routers
-    app.include_router(api_router)
+    # Add CORS middleware
+    server.add_middleware(
+        CORSMiddleware,
+        allow_origins=['*'],
+        allow_credentials=True,
+        allow_methods=['*'],
+        allow_headers=['*'],
+    )
 
-    return app
+    server.include_router(router)
+
+    return server
+
+app = get_application()
 
 
 
